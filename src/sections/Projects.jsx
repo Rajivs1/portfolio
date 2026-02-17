@@ -58,39 +58,78 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Project Development Images */}
+        {/* Project Showcase Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3 }}
-          className="relative rounded-2xl overflow-hidden h-64 mb-12 border-2 border-purple-500/30 shadow-2xl"
+          className="relative rounded-3xl overflow-hidden h-72 mb-16 border-2 border-purple-500/30 shadow-2xl"
         >
           <motion.img
             animate={{ 
-              scale: [1, 1.05, 1],
-              x: [0, -20, 0]
+              scale: [1, 1.08, 1],
+              x: [0, -30, 0]
             }}
-            transition={{ duration: 15, repeat: Infinity }}
-            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=400&fit=crop"
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=400&fit=crop"
             alt="Project Development"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
           <motion.div
             animate={{ 
-              opacity: [0.2, 0.4, 0.2],
+              opacity: [0.3, 0.5, 0.3],
             }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-pink-600/30"
+            transition={{ duration: 5, repeat: Infinity }}
+            className="absolute inset-0 bg-gradient-to-r from-purple-600/40 via-pink-600/30 to-cyan-600/40"
           />
+          
+          {/* Floating particles */}
+          <div className="absolute inset-0">
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.random() * 20 - 10, 0],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{
+                  duration: 3 + i,
+                  repeat: Infinity,
+                  delay: i * 0.5
+                }}
+                className="absolute w-2 h-2 bg-purple-400 rounded-full blur-sm"
+                style={{
+                  left: `${15 + i * 15}%`,
+                  top: `${30 + (i % 3) * 20}%`
+                }}
+              />
+            ))}
+          </div>
+          
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-center"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="text-center px-4"
             >
-              <h3 className="text-3xl font-bold text-white mb-2">Building Amazing Projects</h3>
-              <p className="text-slate-300">With Modern Technologies</p>
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.5 }}
+                className="text-4xl md:text-5xl font-bold text-white mb-3 drop-shadow-lg"
+              >
+                Building <span className="text-gradient">Innovative</span> Solutions
+              </motion.h3>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.7 }}
+                className="text-slate-200 text-lg"
+              >
+                Transforming ideas into reality with cutting-edge technologies
+              </motion.p>
             </motion.div>
           </div>
         </motion.div>
@@ -105,80 +144,168 @@ const Projects = () => {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -12, scale: 1.02 }}
               className="group perspective-container"
             >
-              <div className="relative h-full neon-glass rounded-2xl overflow-hidden transition-all duration-300 hover:border-purple-500/50">
+              <div className={`relative h-full neon-glass rounded-3xl overflow-hidden transition-all duration-500 hover:border-purple-500/60 hover:shadow-2xl hover:shadow-purple-500/20 ${project.isComingSoon ? 'border-cyan-500/40' : ''}`}>
+                {/* Project Number Badge */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.2 + index * 0.1, type: "spring" }}
+                  className={`absolute top-4 left-4 z-10 w-10 h-10 glass-strong rounded-full flex items-center justify-center font-bold border ${project.isComingSoon ? 'text-cyan-300 border-cyan-500/30' : 'text-purple-300 border-purple-500/30'}`}
+                >
+                  {project.isComingSoon ? '🚀' : String(project.id).padStart(2, '0')}
+                </motion.div>
+
+                {/* Coming Soon Badge */}
+                {project.isComingSoon && (
+                  <motion.div
+                    initial={{ scale: 0, rotate: -45 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                    transition={{ delay: 0.5 + index * 0.1, type: "spring", stiffness: 200 }}
+                    className="absolute top-4 right-4 z-10 px-4 py-2 glass-strong rounded-full border border-cyan-500/50 backdrop-blur-md"
+                  >
+                    <motion.span
+                      animate={{ 
+                        opacity: [0.5, 1, 0.5],
+                        scale: [1, 1.05, 1]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="text-xs font-bold text-cyan-300"
+                    >
+                      COMING SOON
+                    </motion.span>
+                  </motion.div>
+                )}
+
                 {/* Project Image */}
-                <div className="relative h-56 overflow-hidden bg-slate-900">
+                <div className="relative h-64 overflow-hidden bg-slate-900">
                   <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.15, rotate: 2 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  {/* Special overlay for Coming Soon */}
+                  {project.isComingSoon && (
+                    <>
+                      <motion.div
+                        animate={{
+                          opacity: [0.3, 0.6, 0.3],
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                        className="absolute inset-0 bg-gradient-to-br from-cyan-600/40 via-purple-600/30 to-pink-600/40"
+                      />
+                      
+                      {/* Animated stars */}
+                      {[...Array(8)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          animate={{
+                            scale: [0, 1, 0],
+                            opacity: [0, 1, 0],
+                            rotate: [0, 180, 360]
+                          }}
+                          transition={{
+                            duration: 2 + i * 0.3,
+                            repeat: Infinity,
+                            delay: i * 0.3
+                          }}
+                          className="absolute w-1 h-1 bg-white rounded-full"
+                          style={{
+                            left: `${10 + i * 12}%`,
+                            top: `${20 + (i % 4) * 20}%`
+                          }}
+                        />
+                      ))}
+                    </>
+                  )}
                   
-                  {/* Hover Links */}
+                  {/* Gradient Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent ${project.isComingSoon ? 'opacity-80' : 'opacity-70'} group-hover:opacity-50 transition-opacity`} />
+                  
+                  {/* Animated Border on Hover */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 flex items-center justify-center gap-4"
+                    className={`absolute inset-0 border-2 transition-all duration-300 ${project.isComingSoon ? 'border-cyan-500/0 group-hover:border-cyan-500/50' : 'border-purple-500/0 group-hover:border-purple-500/50'}`}
+                  />
+                  
+                  {/* Hover Links */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 flex items-center justify-center gap-4 bg-slate-950/40 backdrop-blur-sm"
                   >
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileHover={{ scale: 1.2, rotate: 360 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 glass-strong rounded-full flex items-center justify-center text-white hover:text-purple-400 transition-colors"
+                      transition={{ duration: 0.3 }}
+                      className={`w-14 h-14 glass-strong rounded-full flex items-center justify-center text-white transition-colors shadow-lg ${project.isComingSoon ? 'hover:text-cyan-400' : 'hover:text-purple-400'}`}
                     >
-                      <FaGithub size={20} />
+                      <FaGithub size={24} />
                     </motion.a>
                     
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.2, rotate: -5 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 glass-strong rounded-full flex items-center justify-center text-white hover:text-cyan-400 transition-colors"
-                    >
-                      <FaExternalLinkAlt size={18} />
-                    </motion.a>
+                    {!project.isComingSoon && (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.2, rotate: -360 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-14 h-14 glass-strong rounded-full flex items-center justify-center text-white hover:text-cyan-400 transition-colors shadow-lg"
+                      >
+                        <FaExternalLinkAlt size={20} />
+                      </motion.a>
+                    )}
                   </motion.div>
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-gradient transition-all">
+                <div className="p-6 space-y-4 bg-gradient-to-b from-slate-900/50 to-slate-950/80">
+                  <motion.h3 
+                    className={`text-2xl font-bold text-white group-hover:text-gradient transition-all duration-300 ${project.isComingSoon ? 'text-gradient' : ''}`}
+                    whileHover={{ x: 5 }}
+                  >
                     {project.title}
-                  </h3>
+                  </motion.h3>
                   
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className={`text-sm leading-relaxed line-clamp-3 transition-colors ${project.isComingSoon ? 'text-slate-300 italic' : 'text-slate-400 group-hover:text-slate-300'}`}>
                     {project.description}
                   </p>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <motion.span
                         key={tech}
-                        className="px-3 py-1 text-xs glass rounded-full text-purple-300 border border-purple-500/30"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ delay: 0.4 + index * 0.1 + techIndex * 0.05 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className={`px-3 py-1.5 text-xs glass rounded-full border transition-all cursor-default ${project.isComingSoon ? 'text-cyan-300 border-cyan-500/30 hover:border-cyan-500/60 hover:bg-cyan-500/10' : 'text-purple-300 border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/10'}`}
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
 
                 {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600/20 to-pink-600/20 blur-xl" />
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className={`absolute inset-0 rounded-3xl blur-2xl ${project.isComingSoon ? 'bg-gradient-to-br from-cyan-600/30 via-purple-600/20 to-pink-600/30' : 'bg-gradient-to-br from-purple-600/30 via-pink-600/20 to-cyan-600/30'}`} />
                 </div>
+
+                {/* Corner Accent */}
+                <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity ${project.isComingSoon ? 'from-cyan-500/20' : 'from-purple-500/20'}`} />
               </div>
             </motion.div>
           ))}
