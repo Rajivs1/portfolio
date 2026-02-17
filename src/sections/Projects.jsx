@@ -2,11 +2,13 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { portfolioData } from '../data/portfolioData';
+import { useTheme } from '../context/ThemeContext';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { projects } = portfolioData;
+  const { isDark } = useTheme();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,11 +51,11 @@ const Projects = () => {
             <span className="text-sm text-purple-400">My Work</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? '' : 'text-slate-900'}`}>
             Featured <span className="text-gradient">Projects</span>
           </h2>
           
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className={`text-lg max-w-2xl mx-auto ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
             Explore my latest work and creative solutions
           </p>
         </motion.div>
@@ -270,15 +272,23 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6 space-y-4 bg-gradient-to-b from-slate-900/50 to-slate-950/80">
+                <div className={`p-6 space-y-4 ${isDark ? 'bg-gradient-to-b from-slate-900/50 to-slate-950/80' : 'bg-gradient-to-b from-slate-50/95 to-white/98'}`}>
                   <motion.h3 
-                    className={`text-2xl font-bold text-white group-hover:text-gradient transition-all duration-300 ${project.isComingSoon ? 'text-gradient' : ''}`}
+                    className={`text-2xl font-bold transition-all duration-300 ${
+                      isDark 
+                        ? `text-white ${project.isComingSoon ? 'text-gradient' : 'group-hover:text-gradient'}` 
+                        : `${project.isComingSoon ? 'text-gradient' : 'text-slate-900 group-hover:text-gradient'}`
+                    }`}
                     whileHover={{ x: 5 }}
                   >
                     {project.title}
                   </motion.h3>
                   
-                  <p className={`text-sm leading-relaxed line-clamp-3 transition-colors ${project.isComingSoon ? 'text-slate-300 italic' : 'text-slate-400 group-hover:text-slate-300'}`}>
+                  <p className={`text-sm leading-relaxed line-clamp-3 transition-colors ${
+                    isDark
+                      ? `${project.isComingSoon ? 'text-slate-300 italic' : 'text-slate-400 group-hover:text-slate-300'}`
+                      : `${project.isComingSoon ? 'text-slate-600 italic' : 'text-slate-600 group-hover:text-slate-700'}`
+                  }`}>
                     {project.description}
                   </p>
 
@@ -291,7 +301,15 @@ const Projects = () => {
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: 0.4 + index * 0.1 + techIndex * 0.05 }}
                         whileHover={{ scale: 1.1, y: -2 }}
-                        className={`px-3 py-1.5 text-xs glass rounded-full border transition-all cursor-default ${project.isComingSoon ? 'text-cyan-300 border-cyan-500/30 hover:border-cyan-500/60 hover:bg-cyan-500/10' : 'text-purple-300 border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/10'}`}
+                        className={`px-3 py-1.5 text-xs glass rounded-full border transition-all cursor-default ${
+                          isDark
+                            ? project.isComingSoon 
+                              ? 'text-cyan-300 border-cyan-500/30 hover:border-cyan-500/60 hover:bg-cyan-500/10' 
+                              : 'text-purple-300 border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-500/10'
+                            : project.isComingSoon
+                              ? 'text-cyan-700 border-cyan-500/40 bg-cyan-50 hover:border-cyan-500/60 hover:bg-cyan-100'
+                              : 'text-purple-700 border-purple-500/40 bg-purple-50 hover:border-purple-500/60 hover:bg-purple-100'
+                        }`}
                       >
                         {tech}
                       </motion.span>
@@ -324,7 +342,7 @@ const Projects = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-6 py-3 glass rounded-xl border border-purple-500/30 hover:border-purple-500/60 transition-all"
+            className={`inline-flex items-center gap-2 px-6 py-3 glass rounded-xl border border-purple-500/30 hover:border-purple-500/60 transition-all ${isDark ? 'text-white' : 'text-slate-900'}`}
           >
             <FaGithub size={20} />
             <span>View More on GitHub</span>

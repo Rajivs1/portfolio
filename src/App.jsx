@@ -8,6 +8,13 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Contact from './sections/Contact';
+import FloatingBubbles from './components/FloatingBubbles';
+import CustomCursor from './components/CustomCursor';
+import ScrollProgress from './components/ScrollProgress';
+import MouseTrail from './components/MouseTrail';
+import LoadingScreen from './components/LoadingScreen';
+import ParticleNetwork from './components/ParticleNetwork';
+import SectionDivider from './components/SectionDivider';
 
 function App() {
   const { isDark } = useTheme();
@@ -29,6 +36,24 @@ function App() {
 
   return (
     <div className="min-h-screen animated-bg relative overflow-hidden">
+      {/* Loading Screen */}
+      <LoadingScreen />
+      
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
+      {/* Mouse Trail */}
+      <MouseTrail />
+      
+      {/* Floating Bubbles */}
+      <FloatingBubbles />
+      
+      {/* Particle Network */}
+      <ParticleNetwork />
+      
+      {/* Scroll Progress */}
+      <ScrollProgress />
+      
       {/* Animated Particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (
@@ -66,10 +91,15 @@ function App() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <SectionDivider variant="wave" />
         <About />
+        <SectionDivider variant="dots" />
         <Skills />
+        <SectionDivider variant="line" />
         <Projects />
+        <SectionDivider variant="wave" />
         <Experience />
+        <SectionDivider variant="dots" />
         <Contact />
       </main>
       <Footer />
