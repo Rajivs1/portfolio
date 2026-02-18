@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaArrowDown, FaDownload } from 'react-icons/fa';
 import { HiSparkles, HiCode } from 'react-icons/hi';
 import { portfolioData } from '../data/portfolioData';
+import resumePDF from '../assets/RajivResume010.pdf';
 
 const Hero = () => {
   const { name, role, bio, social } = portfolioData;
@@ -141,10 +142,21 @@ const Hero = () => {
               </motion.a>
               
               <motion.a
+                href={resumePDF}
+                download="Rajiv_Ranjan_Resume.pdf"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 glass-ultra rounded-xl font-semibold border border-purple-500/30 hover:border-purple-500/60 transition-all neon-border-animate ripple-effect relative inline-flex items-center gap-2"
+              >
+                <FaDownload className="text-purple-400" size={18} />
+                <span className="relative z-10">Download Resume</span>
+              </motion.a>
+              
+              <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 glass-ultra rounded-xl font-semibold border border-purple-500/30 hover:border-purple-500/60 transition-all neon-border-animate ripple-effect relative"
+                className="px-8 py-4 glass-ultra rounded-xl font-semibold border border-cyan-500/30 hover:border-cyan-500/60 transition-all ripple-effect relative"
               >
                 <span className="relative z-10">Get In Touch</span>
               </motion.a>

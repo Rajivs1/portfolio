@@ -24,7 +24,7 @@ const LoadingScreen = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
@@ -84,7 +84,7 @@ const LoadingScreen = () => {
               </h2>
               
               {/* Progress Bar */}
-              <div className="w-64 h-2 bg-slate-800 rounded-full overflow-hidden mx-auto">
+              <div className="w-64 h-2 bg-slate-700 rounded-full overflow-hidden mx-auto">
                 <motion.div
                   className="h-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600"
                   initial={{ width: 0 }}

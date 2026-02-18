@@ -63,6 +63,15 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
+      title: "NextRound AI",
+      description: "A comprehensive interview preparation platform designed specifically for students and freshers to ace technical interviews. Combining the power of AI with a robust coding practice environment, it offers personalized learning experiences, real-time code execution, and intelligent interview simulations.",
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
+      tech: ["React", "AI/ML", "Node.js", "Code Execution","Firebase","Groq Api"],
+      github: "https://github.com/Rajivs1/nextround-ai",
+      demo: "https://nextround-ai.vercel.app/",
+    },
+    {
+      id: 2,
       title: "StudyNotion",
       description: "An Edtech platform developed using MERN featuring admin, instructor, and student modules. Instructors can create and launch courses, while students can purchase, learn, and review them. The platform enhances the online learning experience with a user-friendly interface and efficient course management.",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
@@ -71,22 +80,13 @@ export const portfolioData = {
       demo: "https://github.com/Rajivs1/StudyNotion",
     },
     {
-      id: 2,
+      id: 3,
       title: "Journey Scopes",
       description: "A mobile travel application built with React Native that allows users to discover and plan their travel experiences. Features include location-based recommendations, itinerary planning, and travel guides.",
       image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&h=400&fit=crop",
       tech: ["React Native", "JavaScript", "Mobile Development"],
       github: "https://github.com/Rajivs1/JourneyScopes",
       demo: "https://github.com/Rajivs1/JourneyScopes",
-    },
-    {
-      id: 3,
-      title: "NextRound AI",
-      description: "A comprehensive interview preparation platform designed specifically for students and freshers to ace technical interviews. Combining the power of AI with a robust coding practice environment, it offers personalized learning experiences, real-time code execution, and intelligent interview simulations.",
-      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
-      tech: ["React", "AI/ML", "Node.js", "Code Execution","Firebase","Groq Api"],
-      github: "https://github.com/Rajivs1/nextround-ai",
-      demo: "https://nextround-ai.vercel.app/",
     },
     {
       id: 4,
