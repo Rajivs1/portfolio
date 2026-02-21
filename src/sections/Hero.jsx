@@ -279,8 +279,8 @@ const Hero = () => {
                     <div className="text-xs text-slate-400">Projects</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gradient">2+</div>
-                    <div className="text-xs text-slate-400">Years Exp</div>
+                    <div className="text-2xl font-bold text-gradient">8+</div>
+                    <div className="text-xs text-slate-400">Months Exp</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gradient">10+</div>

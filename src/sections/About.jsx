@@ -97,8 +97,8 @@ const About = () => {
                 className="neon-glass rounded-xl p-6 text-center card-3d glow-pulse relative overflow-hidden"
               >
                 <div className="shimmer absolute inset-0" />
-                <div className="text-3xl font-bold text-gradient mb-2 relative z-10">2+</div>
-                <div className="text-sm text-slate-400 relative z-10">Years Experience</div>
+                <div className="text-3xl font-bold text-gradient mb-2 relative z-10">8+</div>
+                <div className="text-sm text-slate-400 relative z-10">Monts Experience</div>
               </motion.div>
 
               <motion.div
