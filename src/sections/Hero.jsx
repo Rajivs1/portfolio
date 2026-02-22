@@ -3,36 +3,15 @@ import { FaGithub, FaLinkedin, FaArrowDown, FaDownload } from 'react-icons/fa';
 import { HiSparkles, HiCode } from 'react-icons/hi';
 import { portfolioData } from '../data/portfolioData';
 import resumePDF from '../assets/RajivResume010.pdf';
+import CyberpunkScene from '../components/CyberpunkScene';
 
 const Hero = () => {
   const { name, role, bio, social } = portfolioData;
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative px-4 py-20 overflow-hidden">
-      {/* Animated Particles Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-purple-500 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, -200, -300],
-              x: [0, Math.random() * 50 - 25],
-              opacity: [0, 1, 1, 0],
-              scale: [0, 1, 1, 0],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 10,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
+      {/* Cyberpunk Neural Network Background */}
+      <CyberpunkScene variant="hero" />
 
       {/* Floating Geometric Shapes */}
       <motion.div

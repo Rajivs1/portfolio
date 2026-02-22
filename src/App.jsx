@@ -13,10 +13,6 @@ import ScrollProgress from './components/ScrollProgress';
 import MouseTrail from './components/MouseTrail';
 import LoadingScreen from './components/LoadingScreen';
 import SectionDivider from './components/SectionDivider';
-import SnapGhosts from './components/SnapGhosts';
-import SnapFilter from './components/SnapFilter';
-import SnapNotification from './components/SnapNotification';
-import SnapConfetti from './components/SnapConfetti';
 
 function App() {
   const { isDark } = useTheme();
@@ -47,18 +43,6 @@ function App() {
       {/* Mouse Trail */}
       <MouseTrail />
       
-      {/* Snapchat Ghosts */}
-      <SnapGhosts />
-      
-      {/* Snap Filter Effect */}
-      <SnapFilter />
-      
-      {/* Snap Notifications */}
-      <SnapNotification />
-      
-      {/* Snap Confetti */}
-      <SnapConfetti trigger={false} />
-      
       {/* Scroll Progress */}
       <ScrollProgress />
       
@@ -80,18 +64,18 @@ function App() {
         ))}
       </div>
 
-      {/* Gradient Orbs - Snapchat Yellow */}
+      {/* Gradient Orbs - Cyberpunk */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-1/4 -left-1/4 w-96 h-96 ${isDark ? 'bg-yellow-500/10' : 'bg-yellow-300/20'} rounded-full blur-3xl animate-pulse`} />
-        <div className={`absolute bottom-1/4 -right-1/4 w-96 h-96 ${isDark ? 'bg-yellow-400/10' : 'bg-yellow-200/20'} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '1s' }} />
-        <div className={`absolute top-1/2 left-1/2 w-96 h-96 ${isDark ? 'bg-yellow-300/5' : 'bg-yellow-100/15'} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '2s' }} />
+        <div className={`absolute top-1/4 -left-1/4 w-96 h-96 ${isDark ? 'bg-purple-500/10' : 'bg-purple-300/20'} rounded-full blur-3xl animate-pulse`} />
+        <div className={`absolute bottom-1/4 -right-1/4 w-96 h-96 ${isDark ? 'bg-pink-500/10' : 'bg-pink-300/20'} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '1s' }} />
+        <div className={`absolute top-1/2 left-1/2 w-96 h-96 ${isDark ? 'bg-cyan-500/5' : 'bg-cyan-200/15'} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Grid Pattern */}
       <div className="fixed inset-0 opacity-[0.02] pointer-events-none" style={{
         backgroundImage: `
-          linear-gradient(rgba(255, 252, 0, 0.3) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 252, 0, 0.3) 1px, transparent 1px)
+          linear-gradient(rgba(168, 85, 247, 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(168, 85, 247, 0.3) 1px, transparent 1px)
         `,
         backgroundSize: '50px 50px'
       }} />

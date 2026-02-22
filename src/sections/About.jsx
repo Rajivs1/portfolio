@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { HiAcademicCap, HiCheckCircle } from 'react-icons/hi';
 import { portfolioData } from '../data/portfolioData';
+import CyberpunkScene from '../components/CyberpunkScene';
 
 const About = () => {
   const ref = useRef(null);
@@ -9,8 +10,11 @@ const About = () => {
   const { about, education } = portfolioData;
 
   return (
-    <section id="about" className="py-20 relative" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 relative overflow-hidden" ref={ref}>
+      {/* Cyberpunk Background */}
+      <CyberpunkScene variant="minimal" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { portfolioData } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
+import CyberpunkScene from '../components/CyberpunkScene';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -33,8 +34,11 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 relative overflow-hidden" ref={ref}>
+      {/* Cyberpunk Background */}
+      <CyberpunkScene variant="minimal" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,26 +92,29 @@ const Projects = () => {
           
           {/* Floating particles */}
           <div className="absolute inset-0">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -30, 0],
-                  x: [0, Math.random() * 20 - 10, 0],
-                  opacity: [0.2, 0.5, 0.2]
-                }}
-                transition={{
-                  duration: 3 + i,
-                  repeat: Infinity,
-                  delay: i * 0.5
-                }}
-                className="absolute w-2 h-2 bg-purple-400 rounded-full blur-sm"
-                style={{
-                  left: `${15 + i * 15}%`,
-                  top: `${30 + (i % 3) * 20}%`
-                }}
-              />
-            ))}
+            {[...Array(6)].map((_, i) => {
+              const xOffset = (i % 3 - 1) * 10;
+              return (
+                <motion.div
+                  key={i}
+                  animate={{
+                    y: [0, -30, 0],
+                    x: [0, xOffset, 0],
+                    opacity: [0.2, 0.5, 0.2]
+                  }}
+                  transition={{
+                    duration: 3 + i,
+                    repeat: Infinity,
+                    delay: i * 0.5
+                  }}
+                  className="absolute w-2 h-2 bg-purple-400 rounded-full blur-sm"
+                  style={{
+                    left: `${15 + i * 15}%`,
+                    top: `${30 + (i % 3) * 20}%`
+                  }}
+                />
+              );
+            })}
           </div>
           
           <div className="absolute inset-0 flex items-center justify-center">
