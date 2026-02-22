@@ -24,13 +24,13 @@ const LoadingScreen = () => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-white dark:bg-[#1A1A1A]"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           <div className="text-center space-y-8">
-            {/* Animated Logo */}
+            {/* Snapchat Ghost Logo */}
             <motion.div
               className="relative"
               initial={{ scale: 0, rotate: -180 }}
@@ -38,24 +38,43 @@ const LoadingScreen = () => {
               transition={{ duration: 0.8, type: "spring" }}
             >
               <motion.div
-                className="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-4xl font-bold text-white"
+                className="w-32 h-32 mx-auto rounded-t-full bg-snap-yellow flex items-center justify-center relative ghost-float"
                 animate={{
                   boxShadow: [
-                    '0 0 20px rgba(168, 85, 247, 0.5)',
-                    '0 0 40px rgba(168, 85, 247, 0.8)',
-                    '0 0 20px rgba(168, 85, 247, 0.5)',
+                    '0 0 20px rgba(255, 252, 0, 0.5)',
+                    '0 0 40px rgba(255, 252, 0, 0.8)',
+                    '0 0 20px rgba(255, 252, 0, 0.5)',
                   ],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                RR
+                {/* Ghost Face */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  {/* Eyes */}
+                  <div className="flex gap-4 mb-2">
+                    <div className="w-3 h-3 bg-black rounded-full" />
+                    <div className="w-3 h-3 bg-black rounded-full" />
+                  </div>
+                  {/* Mouth */}
+                  <div className="w-8 h-4 border-b-4 border-black rounded-b-full" />
+                </div>
+                
+                {/* Ghost Bottom Waves */}
+                <div className="absolute -bottom-1 left-0 right-0 flex justify-around">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-6 h-4 bg-snap-yellow rounded-b-full"
+                    />
+                  ))}
+                </div>
               </motion.div>
               
-              {/* Orbiting Particles */}
+              {/* Orbiting Yellow Dots */}
               {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute top-1/2 left-1/2 w-3 h-3 bg-purple-400 rounded-full"
+                  className="absolute top-1/2 left-1/2 w-4 h-4 bg-snap-yellow rounded-full snap-glow"
                   animate={{
                     rotate: 360,
                   }}
@@ -66,7 +85,7 @@ const LoadingScreen = () => {
                     delay: i * 0.3,
                   }}
                   style={{
-                    transformOrigin: `${40 + i * 10}px 0px`,
+                    transformOrigin: `${50 + i * 10}px 0px`,
                   }}
                 />
               ))}
@@ -79,14 +98,14 @@ const LoadingScreen = () => {
               transition={{ delay: 0.3 }}
               className="space-y-4"
             >
-              <h2 className="text-2xl font-bold text-gradient">
+              <h2 className="text-3xl font-bold yellow-gradient-text">
                 Loading Portfolio
               </h2>
               
-              {/* Progress Bar */}
-              <div className="w-64 h-2 bg-slate-700 rounded-full overflow-hidden mx-auto">
+              {/* Progress Bar - Snapchat Style */}
+              <div className="w-64 h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mx-auto">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600"
+                  className="h-full bg-snap-yellow snap-glow"
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.3 }}
@@ -95,7 +114,7 @@ const LoadingScreen = () => {
               
               {/* Progress Percentage */}
               <motion.p
-                className="text-slate-400 font-mono"
+                className="text-gray-600 dark:text-gray-400 font-bold text-xl"
                 key={progress}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -105,13 +124,13 @@ const LoadingScreen = () => {
             </motion.div>
 
             {/* Animated Dots */}
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center gap-3">
               {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="w-2 h-2 bg-purple-500 rounded-full"
+                  className="w-3 h-3 bg-snap-yellow rounded-full snap-glow"
                   animate={{
-                    y: [0, -10, 0],
+                    y: [0, -15, 0],
                     opacity: [0.5, 1, 0.5],
                   }}
                   transition={{

@@ -10,15 +10,15 @@ const ScrollProgress = () => {
 
   return (
     <>
-      {/* Top Progress Bar */}
+      {/* Top Progress Bar - Snapchat Yellow */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 origin-left z-[9999]"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 origin-left z-[9999]"
         style={{ scaleX }}
       />
       
-      {/* Circular Progress Indicator */}
+      {/* Circular Progress Indicator - Snapchat Style */}
       <motion.div
-        className="fixed bottom-8 right-8 w-14 h-14 rounded-full glass-strong border-2 border-purple-500/30 flex items-center justify-center cursor-pointer z-50 hover:scale-110 transition-transform"
+        className="fixed bottom-8 right-8 w-16 h-16 rounded-full snap-card flex items-center justify-center cursor-pointer z-50 snap-hover-lift yellow-pulse"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1 }}
@@ -30,16 +30,16 @@ const ScrollProgress = () => {
             cy="50"
             r="45"
             fill="none"
-            stroke="rgba(168, 85, 247, 0.2)"
-            strokeWidth="4"
+            stroke="rgba(255, 252, 0, 0.2)"
+            strokeWidth="6"
           />
           <motion.circle
             cx="50"
             cy="50"
             r="45"
             fill="none"
-            stroke="url(#gradient)"
-            strokeWidth="4"
+            stroke="url(#snapGradient)"
+            strokeWidth="6"
             strokeLinecap="round"
             style={{
               pathLength: scrollYProgress,
@@ -47,15 +47,15 @@ const ScrollProgress = () => {
             strokeDasharray="0 1"
           />
           <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#a855f7" />
-              <stop offset="50%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#06b6d4" />
+            <linearGradient id="snapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFFC00" />
+              <stop offset="50%" stopColor="#FFD700" />
+              <stop offset="100%" stopColor="#FFA500" />
             </linearGradient>
           </defs>
         </svg>
         <motion.div
-          className="absolute text-xs font-bold text-purple-400"
+          className="absolute text-xl font-bold snap-yellow"
           style={{
             opacity: useSpring(scrollYProgress, {
               stiffness: 100,
