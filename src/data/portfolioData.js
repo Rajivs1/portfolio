@@ -145,6 +145,37 @@ export const portfolioData = {
     },
   ],
 
+  hobbies: [
+    {
+      id: 1,
+      category: "Travelling",
+      place: "Rishikesh",
+      description: "The yoga capital of the world, where the Ganges flows through the Himalayas. A perfect blend of spirituality, adventure, and natural beauty.",
+      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&h=400&fit=crop",
+    },
+    {
+      id: 2,
+      category: "Travelling",
+      place: "Manali",
+      description: "A stunning hill station in Himachal Pradesh, offering breathtaking mountain views, adventure sports, and serene landscapes.",
+      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&h=400&fit=crop",
+    },
+    {
+      id: 3,
+      category: "Travelling",
+      place: "Shimla",
+      description: "The queen of hill stations, known for its colonial architecture, pleasant weather, and panoramic mountain views.",
+      image: "https://images.unsplash.com/photo-1587974928442-77dc3e0dba72?w=600&h=400&fit=crop",
+    },
+    {
+      id: 4,
+      category: "Travelling",
+      place: "Dharamshala",
+      description: "Home to the Dalai Lama and Tibetan culture, offering peaceful monasteries, cricket stadium, and stunning Dhauladhar ranges.",
+      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=400&fit=crop",
+    },
+  ],
+
   social: {
     github: "https://github.com/Rajivs1",
     linkedin: "https://www.linkedin.com/in/rajiv-ranjan1/",

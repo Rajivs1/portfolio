@@ -7,6 +7,7 @@ import About from './sections/About';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
+import Hobbies from './sections/Hobbies';
 import Contact from './sections/Contact';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
@@ -92,6 +93,8 @@ function App() {
         <SectionDivider variant="wave" />
         <Experience />
         <SectionDivider variant="dots" />
+        <Hobbies />
+        <SectionDivider variant="wave" />
         <Contact />
       </main>
       <Footer />

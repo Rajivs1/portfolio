@@ -4,6 +4,7 @@ import { HiAcademicCap, HiCheckCircle } from 'react-icons/hi';
 import { portfolioData } from '../data/portfolioData';
 import CyberpunkScene from '../components/CyberpunkScene';
 
+
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
