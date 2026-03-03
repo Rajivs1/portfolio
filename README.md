@@ -1,4 +1,4 @@
-# Modern Portfolio Website
+# Modern Portfolio Website of Rajiv
 
 A stunning, responsive personal portfolio website built with React, Tailwind CSS, and Framer Motion. Features smooth animations, glassmorphism design, and a modern dark theme.
 
